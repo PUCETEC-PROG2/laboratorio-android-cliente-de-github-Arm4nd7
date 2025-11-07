@@ -40,7 +40,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/repo_nombre_repositorio"
+                    android:id="@+id/repo_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/test_text"
@@ -63,7 +63,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/repo_descripcion_repositorio"
+                    android:id="@+id/repo_descripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/test_text"
@@ -85,7 +85,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/repo_lenguaje_repositorio"
+                    android:id="@+id/repo_lang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/test_text"

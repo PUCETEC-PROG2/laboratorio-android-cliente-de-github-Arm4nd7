@@ -7,15 +7,19 @@ import ec.edu.uisek.githubclient.databinding.FragmentRepoItemBinding
 
 // 1. Clase ViewHolder: Contiene las referencias a las vistas de un solo ítem.
 //    Usa la clase de ViewBinding generada para fragment_repo_item.xml.
+
+
+//Vamos a setar los texts con el repoViewHolder
 class RepoViewHolder(private val binding: FragmentRepoItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    //RecyclerView es lista de componentes
 
     // 2. Función para vincular datos a las vistas del ítem.
     //    Por ahora, usaremos datos de ejemplo.
     fun bind(position: Int) {
         binding.repoOwnerImage.setImageResource(R.mipmap.ic_launcher) // Usa una imagen que tengas
         binding.repoName.text = "Repositorio #${position + 1}"
-        binding.repoDescription.text = "Esta es la descripción del elemento número ${position + 1} en la lista."
-        binding.repoLanguage.text = if (position % 2 == 0) "Kotlin" else "Java"
+        binding.repoDescripcion.text = "Esta es la descripción del elemento número ${position + 1} en la lista."
+        binding.repoLang.text = if (position % 2 == 0) "Kotlin" else "Java"
     }
 }
 
