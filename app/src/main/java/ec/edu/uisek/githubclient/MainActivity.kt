@@ -8,9 +8,9 @@ import androidx.core.view.WindowInsetsCompat
 import ec.edu.uisek.githubclient.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         //lateinit se inicializa despues propio de kotlin
-        private lateinit var binding: ActivityMainBinding
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
     }
