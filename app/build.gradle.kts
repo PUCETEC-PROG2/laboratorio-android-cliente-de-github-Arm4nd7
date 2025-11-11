@@ -15,6 +15,21 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Configurar la variable de entorno desde .env
+        val envFile = rootProject.file(".env") //Lee el .env
+        val githubToken = if (envFile.exists()) {
+            envFile.readLines()
+                .firstOrNull { it.startsWith("GITHUB_API_TOKEN=") }
+                ?.substringAfter("GITHUB_API_TOKEN=")
+                ?.trim()
+                ?: ""
+        } else {
+            ""
+        }
+
+        buildConfigField("String", "GITHUB_API_TOKEN", "\"$githubToken\"") //con lo que nos da podemos usar en el proyecto
+
     }
 
     buildTypes {
@@ -29,6 +44,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
