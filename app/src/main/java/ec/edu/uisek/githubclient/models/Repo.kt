@@ -10,3 +10,9 @@ data class Repo(
     val description: String?,
     val owner: RepoOwner //deserializamos el owner del el objeto que nos da al hacer la llamada al repo de github
 )
+
+data class RepoRequest(
+    //nos ayuda a enviar request desde el formulario
+    val name: String,
+    val description: String?
+)

@@ -20,4 +20,17 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/fragment_repo_item" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/new_repo_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/design_default_color_primary_variant"
+        android:layout_margin="16dp"
+        android:src="@drawable/add_24"
+        app:tint="@color/white"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle.repo"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
