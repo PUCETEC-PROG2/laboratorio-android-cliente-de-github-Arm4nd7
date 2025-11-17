@@ -1,5 +1,6 @@
 package ec.edu.uisek.githubclient
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -25,8 +26,20 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupRecylerView()
-        fetchRepositories()
+
+        //le damos la funcion de abrir el form al boton flotante que tiene el +
+        binding.newRepoFab.setOnClickListener {
+            displayNewRepoForm()
+        }
+
+    }
+
+    //usamos  onResume para que no pause el ciclo de vida del main activity
+    override fun onResume() {
+        //se recarga en cada momento al cambiar de activity
+        super.onResume()
+        setupRecylerView() //funciona en el adaptador
+        fetchRepositories() //ontenemos la lista de repositorios
     }
 
     private fun setupRecylerView(){
@@ -76,6 +89,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun showMessage(msg: String){
         Toast.makeText(this, msg, Toast.LENGTH_LONG)
+    }
+
+    //funcion para abrir el formulario
+    private fun displayNewRepoForm(){
+        //el Intent se va a encargar de desplegar otra vista o activity
+        Intent(this, RepoForm::class.java).apply{
+            startActivity(this)
+        } // abre repo from
+
     }
 }
 
