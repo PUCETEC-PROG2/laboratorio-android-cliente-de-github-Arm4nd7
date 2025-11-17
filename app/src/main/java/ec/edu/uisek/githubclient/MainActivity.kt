@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                         401 -> "Error de autenticacion"
                         403 -> "Recurso no permitido"
                         404 -> "Recurso no encontrado"
-                        else -> "Error desconociido ${response.code()}"
+                        else -> "Error desconociido ${response.code()}: ${response.message()}"
                     }
                     //voy a lanzar un error
                     Log.e("MainActivity", errorMessage)

@@ -1,17 +1,14 @@
 package ec.edu.uisek.githubclient
 
 import android.os.Bundle
-import android.telecom.Call
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import ec.edu.uisek.githubclient.databinding.ActivityRepoFormBinding
 import ec.edu.uisek.githubclient.models.Repo
 import ec.edu.uisek.githubclient.models.RepoRequest
 import ec.edu.uisek.githubclient.services.RetrofitClient
+import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
@@ -61,7 +58,7 @@ class RepoForm : AppCompatActivity() {
         val call = apiService.postFormRepo(repoRequest)
 
         call.enqueue(object : Callback<Repo>{
-            override fun onResponse(call: retrofit2.Call<Repo?>, response: Response<Repo?>) {
+            override fun onResponse(call: Call<Repo?>, response: Response<Repo?>) {
                 if(response.isSuccessful){
                     Log.d("RepoForm", "El repositorio ${repoName} fue creado exitosamente")
                     showMessage("El repositorio ${repoName} fue creado exitosamente")
@@ -72,7 +69,7 @@ class RepoForm : AppCompatActivity() {
                         401 -> "Error de autenticacion"
                         403 -> "Recurso no permitido"
                         404 -> "Recurso no encontrado"
-                        else -> "Error desconociido ${response.code()}"
+                        else -> "Error desconociido ${response.code()}: ${response.message()}"
                     }
                     //voy a lanzar un error
                     Log.e("RepoForm", errorMessage)
