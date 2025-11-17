@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/design_default_color_primary_variant"
+        android:backgroundTint="@color/color_button_armando"
         android:layout_margin="16dp"
         android:src="@drawable/add_24"
         app:tint="@color/white"
