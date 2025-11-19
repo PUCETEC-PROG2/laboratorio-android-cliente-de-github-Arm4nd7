@@ -110,15 +110,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayRepoModifyEdit(repo: Repo) {
         Intent(this, RepoModify::class.java).apply {
-            intent.putExtra("repoId", repo.id)
-            intent.putExtra("repoDescription", repo.description)
+            putExtra("owner", repo.owner.login)
+            putExtra("name", repo.name)
+            putExtra("description", repo.description)
             startActivity(this)
         }
     }
 
     private fun displayRepoModifyDelete(repo: Repo) {
         Intent(this, RepoDelete::class.java).apply {
-            intent.putExtra("repoId", repo.id)
+            putExtra("owner", repo.owner.login)
+            putExtra("name", repo.name)
             startActivity(this)
         }
     }

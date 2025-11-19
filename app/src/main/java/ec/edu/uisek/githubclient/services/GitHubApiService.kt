@@ -27,8 +27,18 @@ interface GitHubApiService {
         @Body repoRequest: RepoRequest
     ): Call<Repo>
 
-    @PATCH("/repos/{owner}/{repo}")
+    @PATCH("repos/{owner}/{repo}")
     fun patchEditFormRepo(
+        @Path("owner") owner: String,
+        @Path("repo") repo: String,
         @Body repoEditRequest: RepoEditRequest
     ): Call<Repo>
+
+    @DELETE("repos/{owner}/{repo}")
+    fun deleteRepoSelect(
+        @Path("owner") owner: String,
+        @Path("repo") repo: String,
+    ): Call<Repo>
+
+
 }

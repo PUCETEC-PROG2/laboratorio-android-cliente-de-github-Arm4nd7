@@ -21,13 +21,28 @@ import retrofit2.Response
 class RepoModify : AppCompatActivity() {
 
     private lateinit var repoFormEditBinding: ActivityRepoModifyBinding
-    private lateinit var nameRepoActual: String
+    private lateinit var owner: String
+    private lateinit var nameRepo: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_repo_modify)
         repoFormEditBinding = ActivityRepoModifyBinding.inflate(layoutInflater)
         setContentView(repoFormEditBinding.root)
+
+        owner = intent.getStringExtra("owner")!!
+        nameRepo = intent.getStringExtra("name")!!
+
+        //mostramos los datos en  el formulario
+        repoFormEditBinding.descriptionRepoInputForm.setText(
+            intent.getStringExtra("description") ?: ""
+        )
+        repoFormEditBinding.nameRepoInputForm.setText(
+            intent.getStringExtra("name") ?: ""
+        )
+
+
         repoFormEditBinding.buttonCancelRepo.setOnClickListener { finish() }
         repoFormEditBinding.buttonSaveRepo.setOnClickListener { editRepo() }
     }
@@ -38,7 +53,6 @@ class RepoModify : AppCompatActivity() {
             repoFormEditBinding.descriptionRepoInputForm.error = "La descripcion no puede estar vacia"
             return false
         }
-
         return true
     }
 
@@ -47,23 +61,21 @@ class RepoModify : AppCompatActivity() {
             return
         }
 
-        nameRepoActual = intent.getStringExtra("name")!!
         val repoDescription = repoFormEditBinding.descriptionRepoInputForm.text.toString()
 
-        val repoEditRequest: RepoEditRequest = RepoEditRequest(
-            name = null,
+        val repoEditRequestData: RepoEditRequest = RepoEditRequest(
             description = repoDescription
         )
 
         //vamos a crar el cliente de GITHUB usando API service
-        var apiService = RetrofitClient.gitHubApiService
-        val call = apiService.patchEditFormRepo(repoEditRequest)
+        val apiService = RetrofitClient.gitHubApiService
+        val call = apiService.patchEditFormRepo(owner, nameRepo, repoEditRequestData)
 
         call.enqueue(object : Callback<Repo>{
             override fun onResponse(call: Call<Repo?>, response: Response<Repo?>) {
                 if(response.isSuccessful){
-                    Log.d("RepoModify", "El repositorio ${nameRepoActual} fue editado exitosamente")
-                    showMessage("El repositorio ${nameRepoActual} fue editado exitosamente")
+                    Log.d("RepoModify", "El repositorio ${nameRepo} fue editado exitosamente")
+                    showMessage("El repositorio ${nameRepo} fue editado exitosamente")
                     finish()
                 }else {
                     //no hay respuesta
