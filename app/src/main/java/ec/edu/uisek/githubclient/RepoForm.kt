@@ -54,7 +54,7 @@ class RepoForm : AppCompatActivity() {
         )
 
         //vamos a crar el cliente de GITHUB usando API service
-        var apiService = RetrofitClient.gitHubApiService
+        val apiService = RetrofitClient.gitHubApiService
         val call = apiService.postFormRepo(repoRequest)
 
         call.enqueue(object : Callback<Repo>{
