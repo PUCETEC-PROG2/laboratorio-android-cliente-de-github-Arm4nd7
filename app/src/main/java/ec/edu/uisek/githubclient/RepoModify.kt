@@ -27,7 +27,6 @@ class RepoModify : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_repo_modify)
         repoFormEditBinding = ActivityRepoModifyBinding.inflate(layoutInflater)
         setContentView(repoFormEditBinding.root)
 

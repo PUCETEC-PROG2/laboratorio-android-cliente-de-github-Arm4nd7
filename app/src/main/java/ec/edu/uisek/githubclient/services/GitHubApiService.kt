@@ -38,7 +38,7 @@ interface GitHubApiService {
     fun deleteRepoSelect(
         @Path("owner") owner: String,
         @Path("repo") repo: String,
-    ): Call<Repo>
+    ): Call<Void>
 
 
 }
