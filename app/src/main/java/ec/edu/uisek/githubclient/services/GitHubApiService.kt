@@ -1,11 +1,16 @@
 package ec.edu.uisek.githubclient.services
 
 import ec.edu.uisek.githubclient.models.Repo
+import ec.edu.uisek.githubclient.models.RepoEditRequest
 import ec.edu.uisek.githubclient.models.RepoRequest
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GitHubApiService {
@@ -20,5 +25,10 @@ interface GitHubApiService {
     @POST("/user/repos")
     fun postFormRepo(
         @Body repoRequest: RepoRequest
+    ): Call<Repo>
+
+    @PATCH("/repos/{owner}/{repo}")
+    fun patchEditFormRepo(
+        @Body repoEditRequest: RepoEditRequest
     ): Call<Repo>
 }

@@ -16,3 +16,8 @@ data class RepoRequest(
     val name: String,
     val description: String?
 )
+
+data class RepoEditRequest(
+    val name: String?,
+    val description: String
+)
