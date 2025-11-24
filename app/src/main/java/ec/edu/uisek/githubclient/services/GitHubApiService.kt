@@ -22,18 +22,24 @@ interface GitHubApiService {
         @Query("direction") direction: String = "desc",
     ): Call<List<Repo>> //usamos promise que se llama Call
 
+
+    //metodo para crear repositorio
     @POST("/user/repos")
     fun postFormRepo(
         @Body repoRequest: RepoRequest
     ): Call<Repo>
 
+    //metodo para aditar repositorio
     @PATCH("repos/{owner}/{repo}")
     fun patchEditFormRepo(
+        //datos que le paso a la ruta
         @Path("owner") owner: String,
         @Path("repo") repo: String,
         @Body repoEditRequest: RepoEditRequest
     ): Call<Repo>
 
+    //metodo para eliminar repositorio
+    //delete no ncecesita un body
     @DELETE("repos/{owner}/{repo}")
     fun deleteRepoSelect(
         @Path("owner") owner: String,

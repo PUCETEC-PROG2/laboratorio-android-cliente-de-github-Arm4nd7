@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         //se recarga en cada momento al cambiar de activity
         super.onResume()
         setupRecylerView() //funciona en el adaptador
-        fetchRepositories() //ontenemos la lista de repositorios
+        fetchRepositories() //obtenemos la lista de repositorios
     }
 
     private fun setupRecylerView() {
@@ -108,6 +108,8 @@ class MainActivity : AppCompatActivity() {
         } // abre repo from
     }
 
+
+    //metodo para abrir formulario de editar
     private fun displayRepoModifyEdit(repo: Repo) {
         Intent(this, RepoModify::class.java).apply {
             putExtra("owner", repo.owner.login)
@@ -117,6 +119,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //metodo para abrir confirmacion de eliminar
     private fun displayRepoModifyDelete(repo: Repo) {
         Intent(this, RepoDelete::class.java).apply {
             putExtra("owner", repo.owner.login)

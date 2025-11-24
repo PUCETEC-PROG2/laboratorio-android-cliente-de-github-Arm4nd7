@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,22 +32,29 @@
                 android:orientation="horizontal"
                 android:padding="10dp"
                 >
-                <Button
-                    android:id="@+id/button_edit_repo"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/edit_24"
-                    android:layout_weight="1"/>
 
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"/>
-                <Button
-                    android:id="@+id/button_delete_repo"
+                <ImageButton
+                    android:id="@+id/button_edit_repo"
+                    android:contentDescription="@string/description_edit"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:background="@drawable/delete_24" />
+                    android:backgroundTint="@color/color_icon_armando"
+                    android:background="@drawable/edit_24" />
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"/>
+
+                <ImageButton
+                    android:id="@+id/button_delete_repo"
+                    android:contentDescription="@string/description_delete"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/delete_241"
+                    android:backgroundTint="@color/color_button_armando"
+                    android:layout_weight="1"
+                    />
             </LinearLayout>
         </LinearLayout>
 
@@ -59,7 +67,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:layout_width="120dp"

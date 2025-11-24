@@ -46,6 +46,9 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:text="@string/cancel"/>
 
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
             <Button
                 android:id="@+id/button_save_repo"
                 android:layout_width="0dp"

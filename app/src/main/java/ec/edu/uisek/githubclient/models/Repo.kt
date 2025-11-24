@@ -17,6 +17,7 @@ data class RepoRequest(
     val description: String?
 )
 
+//almaceno solo la descripcion
 data class RepoEditRequest(
     val description: String
 )
